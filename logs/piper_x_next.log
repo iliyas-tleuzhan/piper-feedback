@@ -1,0 +1,1302 @@
+[INFO] [1794821115.135535146] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794821115.135837186] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794821115.136048451] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794821115.136264842] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794821146.278458263] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794821146.278743047] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794821146.278964618] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794821146.279193523] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794821196.032629042] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794821196.032934138] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794821196.033180300] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794821196.033415160] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794821306.082367232] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794821306.082645076] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794821306.082859385] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794821306.083086659] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794821409.293454153] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794821409.293719316] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794821409.293922990] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794821409.294132081] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794821564.564291795] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794821564.564589828] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794821564.564789723] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794821564.564993486] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794821578.062267882] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794821578.062521063] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794821578.062724412] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794821578.062920881] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794821583.213992383] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794821583.214248408] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794821583.214442154] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794821583.214642623] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794822136.541651683] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794822136.541955265] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794822136.542158638] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794822136.542362484] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794822145.887127763] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794822145.887375939] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794822145.887573329] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794822145.887768945] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794822157.558135017] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794822157.558380687] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794822157.558612142] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794822157.558811396] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794822615.764687848] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794822615.764964192] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794822615.765161111] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794822615.765362258] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794823538.468229207] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794823538.468487059] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794823538.468712404] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794823538.468913954] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794823548.416163955] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794823548.416424441] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794823548.416631585] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794823548.416849717] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794823555.760474111] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794823555.760739188] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794823555.760942985] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794823555.761147304] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794823561.824483060] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794823561.824736968] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794823561.824937042] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794823561.825145545] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794823764.564223363] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794823764.564484418] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794823764.564686582] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794823764.564889419] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794987455.782915149] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794987455.783499577] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794987455.783993660] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794987455.784503463] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794987464.509050723] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794987464.509292914] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794987464.509491683] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794987464.509703300] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794987763.895438736] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794987763.895690864] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794987763.895891508] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794987763.896092922] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794987782.737700936] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794987782.737954041] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794987782.738157170] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794987782.738383020] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794987786.145392768] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794987786.145629522] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794987786.145830407] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794987786.146033289] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794987790.066426174] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794987790.066701466] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794987790.066920012] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794987790.067141933] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794987795.206730173] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794987795.207055374] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794987795.207267950] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794987795.207488771] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794987798.090100377] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794987798.090393151] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794987798.090608189] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794987798.090812015] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794988039.540425476] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794988039.540672687] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794988039.540870725] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794988039.541072115] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794988162.250696297] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794988162.250961138] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794988162.251185332] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794988162.251422841] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794988174.403288863] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794988174.403599700] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794988174.403815412] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794988174.404023125] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794989000.573787583] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794989000.574090168] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794989000.574292695] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794989000.574495406] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794990375.533180219] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794990375.533437479] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794990375.533651774] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794990375.533861340] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794990384.373752308] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794990384.374035411] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794990384.374248113] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794990384.374481109] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794990475.161746521] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794990475.161997675] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794990475.162209213] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794990475.162420565] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794990555.019614399] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794990555.019884784] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794990555.020080296] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794990555.020284000] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794991247.323852975] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794991247.324117411] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794991247.324314267] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794991247.324510763] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1794991600.480930669] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1794991600.481179602] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1794991600.481393572] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1794991600.481601509] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795072325.600267033] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795072325.601554677] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795072325.602120574] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795072325.602692190] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795073810.847514423] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795073810.847808711] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795073810.848039216] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795073810.848272503] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795073823.991155840] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795073823.991422834] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795073823.991630184] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795073823.991847736] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795073842.531922044] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795073842.532197607] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795073842.532448353] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795073842.532686764] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795074054.559706254] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795074054.559967200] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795074054.560170380] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795074054.560385834] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795074429.632308112] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795074429.632568313] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795074429.632767518] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795074429.632974501] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795074468.098386358] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795074468.098637523] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795074468.098838830] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795074468.099048998] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795075145.739234213] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795075145.739641254] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795075145.739890375] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795075145.740144913] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795075473.862809701] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795075473.863069692] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795075473.863288779] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795075473.863517407] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795075798.336715704] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795075798.336970661] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795075798.337176346] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795075798.337392757] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795075803.363119634] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795075803.363405170] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795075803.363621204] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795075803.363849045] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795076114.696173406] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795076114.696450895] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795076114.696672130] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795076114.696907491] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795077436.667564759] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795077436.667823731] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795077436.668029973] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795077436.668262860] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795077739.862295397] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795077739.862581971] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795077739.862810530] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795077739.863032629] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795078308.283962804] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795078308.284237367] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795078308.284465951] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795078308.284719031] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795078516.246941389] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795078516.247191286] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795078516.247391409] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795078516.247618772] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795078645.245753200] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795078645.246037830] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795078645.246260322] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795078645.246471734] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795079092.545961016] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795079092.546220173] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795079092.546429498] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795079092.546644478] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795079160.561698900] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795079160.561956781] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795079160.562198307] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795079160.562438339] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795079778.104596759] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795079778.104855163] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795079778.105048542] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795079778.105249940] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795079940.341718314] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795079940.342019042] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795079940.342227002] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795079940.342429427] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795080109.261998492] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795080109.262272205] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795080109.262487926] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795080109.262729704] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795080170.274352677] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795080170.274599451] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795080170.274796414] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795080170.274998059] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795080361.786230340] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795080361.786499382] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795080361.786707800] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795080361.786915862] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795080485.121917079] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795080485.122211675] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795080485.122415121] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795080485.122689418] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795080511.484816869] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795080511.485062374] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795080511.485263954] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795080511.485466347] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+[INFO] [1795080715.101548638] [factr2_next_inference]: Loaded NEXT checkpoint: robot=/next_capture/piper_x_follower, next=/next/piper_x_follower
+[INFO] [1795080715.101896291] [factr2_next_inference]: External torque smoothing: ema; filtered=/next/piper_x_follower/external_joint_torque, raw=/next/piper_x_follower/external_joint_torque/raw
+[INFO] [1795080715.102157559] [factr2_next_inference]: Normalized contact magnitude: l1 norm of filtered_external_joint_torque
+[INFO] [1795080715.102423616] [factr2_next_inference]: Contact hysteresis: low=1.0, high=2.0
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/dase-hw101/Iliyas/factr2_next/build/factr2_next/factr2_next/inference/inference_node.py", line 277, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException

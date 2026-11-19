@@ -74,6 +74,7 @@ class InferenceNode(Node):
         self.contact_magnitude_cfg = self._contact_magnitude_cfg()
         self.contact_cfg = self.cfg.get("contact", {})
         self.contact_state = False
+        self.last_input_stamp = None
         self.topic_cfg = self.cfg["topics"]
 
         self.subscribers = [
@@ -126,6 +127,17 @@ class InferenceNode(Node):
         )
 
     def _callback(self, *msgs):
+        stamps = [m.header.stamp.sec + m.header.stamp.nanosec * 1e-9 for m in msgs]
+        stamp = min(stamps)
+        gap_limit = float(self.cfg.get("sync", {}).get("max_input_gap_seconds", 0.04))
+        if self.last_input_stamp is not None and (
+            stamp <= self.last_input_stamp or stamp - self.last_input_stamp > gap_limit
+        ):
+            self.buffer = HistoryBuffer(self.loaded.history)
+            self.torque_filter.y = None
+            self.contact_state = False
+            self.pubs["contact"].publish(Bool(data=False))
+        self.last_input_stamp = stamp
         joint_pos, joint_vel, joint_cmd, measured = [
             self._extract(msg, key) for msg, key in zip(msgs, INPUT_KEYS)
         ]

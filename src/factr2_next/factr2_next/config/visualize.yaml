@@ -1,6 +1,6 @@
 # Topic roots used by NEXT inference and the optional feedback demo.
-next_topic_root: /next/right
-feedback_topic_root: /factr2_feedback/right
+next_topic_root: /next/piper_x_follower
+feedback_topic_root: /factr2_feedback/piper_x_follower
 
 web:
   host: 127.0.0.1

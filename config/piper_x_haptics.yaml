@@ -1,0 +1,31 @@
+# Two upright Piper X arms, standard grippers; verified S-V1.8-9 firmware.
+master_can: can1
+slave_can: can0
+firmware: S-V1.8-9
+robot_topic_root: /next_capture/piper_x_follower
+next_topic_root: /next/piper_x_follower
+feedback_topic_root: /factr2_feedback/piper_x_follower
+control_hz: 250 # 4 ms command period on each arm; measured feedback rate is firmware-defined
+publish_hz: 50
+state_timeout: 0.1
+# All native phases: pause new commands after 0.2 s, fault after 0.5 s.
+native_feedback_timeout: 0.5
+next_timeout: 0.1
+alignment_tolerance: 0.17453292519943295 # strict < 10 degrees on every joint
+alignment_complete_tolerance: 0.017453292519943295 # <= 1 degree
+alignment_velocity: 0.05 # rad/s during alignment (normal teleop: 0.25)
+alignment_settle_seconds: 0.3
+max_velocity: 0.25
+max_tracking_error: 0.25
+master_max_velocity: 1.5
+# Pure torque control, as in the Piper X gravity compensation reference.
+# This removes commanded viscous resistance; it cannot remove mechanical friction.
+master_damping: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+master_total_torque_limit: [8.0, 14.0, 10.0, 3.0, 3.0, 2.0]
+gravity_urdf: /home/dase-hw101/agx_arm_ws/src/agx_arm_ros/src/agx_arm_description/agx_arm_urdf/piper_x/urdf/piper_x_description.urdf
+gripper_xacro: /home/dase-hw101/agx_arm_ws/src/agx_arm_ros/src/agx_arm_description/agx_arm_urdf/piper_x/urdf/piper_x_with_gripper_description.xacro
+feedback:
+  gains: [-0.08, -0.04, -0.05, -0.08, -0.08, -0.08]
+  deadband: [0.5, 1.3, 1.0, 0.3, 0.12, 0.12]
+  limits: [0.25, 0.35, 0.3, 0.15, 0.1, 0.1]
+  slew_nm_per_second: 1.0

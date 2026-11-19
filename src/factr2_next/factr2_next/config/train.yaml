@@ -1,8 +1,8 @@
 data:
   train_h5_paths:
-    - /path/to/free_motion_train.h5
+    - /home/dase-hw101/Iliyas/factr2_next/data/prepared_20261112_171655/train.h5
   val_h5_paths:
-    - /path/to/free_motion_val.h5
+    - /home/dase-hw101/Iliyas/factr2_next/data/prepared_20261112_171655/val.h5
 
   val_episodes: all
   train_episodes: all
@@ -37,7 +37,7 @@ model:
   dropout: 0.1
 
 train:
-  batch_size: 2048
+  batch_size: 256
   # Good for a quick smoke test; increase for final training.
   epochs: 20
   learning_rate: 0.001
@@ -46,4 +46,4 @@ train:
 
 save:
   output_dir: runs
-  run_name: next_free_torque
+  run_name: piper_x_free_torque

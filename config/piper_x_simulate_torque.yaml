@@ -1,0 +1,51 @@
+# Continuous torque reflection; signed gains require physical direction validation.
+# Two upright Piper X arms, standard grippers; verified S-V1.8-9 firmware.
+master_can: can1
+slave_can: can0
+firmware: S-V1.8-9
+robot_topic_root: /next_capture/piper_x_follower
+next_topic_root: /next/piper_x_follower
+feedback_topic_root: /factr2_feedback/piper_x_follower
+control_hz: 250 # 4 ms command period on each arm; measured feedback rate is firmware-defined
+publish_hz: 50
+state_timeout: 0.5
+# All native phases: pause new commands after 0.2 s, fault after 0.5 s.
+native_feedback_timeout: 0.5
+next_timeout: 0.1
+alignment_tolerance: 0.17453292519943295 # strict < 10 degrees on every joint
+alignment_complete_tolerance: 0.017453292519943295 # <= 1 degree
+alignment_velocity: 0.05 # rad/s during alignment (normal teleop: 0.25)
+alignment_settle_seconds: 0.3
+max_velocity: 0.25
+max_tracking_error: 0.25
+master_max_velocity: 1.5
+# Explicit damping torque in Nm/(rad/s); firmware MIT kp=kd=0.
+# Gravity compensation and gated contact reflection use the same torque path.
+master_damping: [0.1, 0.1, 0.08, 0.03, 0.03, 0.02]
+master_total_torque_limit: [8.0, 14.0, 10.0, 3.0, 3.0, 2.0]
+gravity_urdf: /home/dase-hw101/agx_arm_ws/src/agx_arm_ros/src/agx_arm_description/agx_arm_urdf/piper_x/urdf/piper_x_description.urdf
+gripper_xacro: /home/dase-hw101/agx_arm_ws/src/agx_arm_ros/src/agx_arm_description/agx_arm_urdf/piper_x/urdf/piper_x_with_gripper_description.xacro
+feedback:
+  # Oppose the estimated slave joint torque; unity magnitude before limits.
+  gains: [-1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+  deadband: [0, 0, 0, 0, 0, 0]
+  # Match existing software total-torque ceilings, not hardware-rated maxima.
+  # Combined gravity/reflection/damping guard remains active before CAN send.
+  limits: [8.0, 14.0, 10.0, 3.0, 3.0, 2.0]
+  slew_nm_per_second: 6.0
+
+# Suppress driving motion; rearm on resisting motion or fresh contact release.
+reflection_motion_speed: 0.05
+
+# Gripper force command when following MIT-master measured opening.
+gripper_follow_effort: 200
+
+# Gripper resistance uses observed effort + position error, not NEXT.
+gripper_feedback:
+  enabled: true
+  max_opening_um: 95000
+  gap_um: 2000
+  deadband_nm: 0.05
+  gain: 0.5
+  max_effort_nm: 0.1
+  timeout: 0.1

@@ -1,0 +1,15 @@
+# Physical interfaces are fixed: can1 operator arm, can0 environment arm.
+teleop_hz: 250
+feedback_hz: 50
+# L1 norm (sum of absolute values) of NEXT filtered external torque, in Nm.
+contact_on: 2.2
+contact_off: 1.0
+contact_on_seconds: 0.08
+contact_off_seconds: 0.0
+next_timeout: 0.3
+# Includes NEXT history warmup after each role transition.
+warmup_timeout: 15.0
+role_timeout: 3.0
+
+# Return control even if release estimates disappear during the role change.
+max_feedback_seconds: 0.5
