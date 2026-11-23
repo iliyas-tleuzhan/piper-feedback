@@ -1,4 +1,19 @@
-> On branch `simulate-torque`, `control` and `feedback` now use continuous torque reflection. See [PIPER_X_SIMULATE_TORQUE.md](PIPER_X_SIMULATE_TORQUE.md). The role-switching behavior below is historical.
+The default launcher mode is feedback, with **both arms as firmware slaves**.
+`control` also selects feedback. For plain teleop with can1 firmware master
+and can0 slave, explicitly use:
+
+```bash
+cd /home/dase-hw101/Iliyas/factr2_next
+bash scripts/run_piper_x_haptics.sh teleop
+```
+
+The explicit `teleop` mode forwards arm
+and gripper commands without NEXT inference or force feedback. It uses the
+existing native alignment sequence. The follower retains its enables and holds
+its measured startup pose while the leader is brought within 15 degrees.
+Use `feedback` explicitly for continuous torque reflection.
+
+> The mode descriptions below are historical. See [PIPER_X_SIMULATE_TORQUE.md](PIPER_X_SIMULATE_TORQUE.md) for the explicit feedback mode.
 
 > `control` and `feedback` now launch NEXT-triggered native role reversal. See [PIPER_X_ROLE_SWAP.md](PIPER_X_ROLE_SWAP.md). The fixed-role and legacy torque modes below remain available under `native` and `torque-feedback`.
 
@@ -19,10 +34,13 @@ sudo bash scripts/setup_piper_x_can.sh
 bash scripts/run_piper_x_haptics.sh native
 ```
 
-No arming keys are required. Startup disables the slave to release retained
-hold, selects native master on can1 and follower on can0, then waits for the
-master's native targets (0x155–0x157) and slave measured state (0x2A5–0x2A7).
-Support the disabled slave; it is not gravity-supported by this program.
+No arming keys are required. Startup selects native master on can1 and follower
+on can0 without disabling the slave. Once fresh measured state is available,
+it seeds a fixed position hold, confirms position mode, and enables any disabled
+slave joints. It holds that pose while waiting for the master's native targets
+(0x155–0x157) to be within 15 degrees, then runs the alignment ramp and teleop.
+There is no deliberate release between holding, alignment, and following.
+An initially disabled arm needs physical support until the hold is established.
 
 Native alignment now uses the wireless bridge's sampled-pose ramp: a 15-degree
 entry threshold and 0.3-degree steps every 20 ms toward a fixed sampled master

@@ -1,6 +1,6 @@
 # Continuous torque reflection
 
-`bash scripts/run_piper_x_haptics.sh control` starts both arms as firmware
+`bash scripts/run_piper_x_haptics.sh feedback` starts both arms as firmware
 slaves. Can1 is the software leader in compliant MIT torque mode; can0 follows
 its measured joint angles in position mode at 250 Hz after startup alignment.
 Continuous NEXT torque reflection and gripper following are enabled. There is
@@ -8,6 +8,10 @@ no master-speed shutdown and no runtime role swapping.
 
 `torque-feedback` and `feedback` select the same controller. `native` explicitly
 selects the older firmware-master teleop with NEXT observation only.
+The default command (no argument) and `control` also select feedback with both
+arms configured as firmware slaves. Explicit `teleop` selects plain native
+teleop: can1 firmware master, can0 follower, arm and gripper command forwarding,
+no NEXT inference or force feedback.
 No hardware execution was performed while implementing these changes.
 
 The same NativeTeleop follower engine provides the 15-degree entry gate,
@@ -22,9 +26,23 @@ Alignment completion compares against that same reachable command target.
 The operator gripper motor is released at the start of alignment. Only fresh
 measured gripper opening drives can0, using a 200-unit (0.2 Nm SDK command)
 effort setting. Gripper feedback uses observed can0 load and opening mismatch
-to request effort-limited position resistance on can1 (0.1 Nm effort cap).
+to request effort-limited position resistance on can1 (5000 raw-unit effort cap).
 It is not a NEXT estimate or a signed torque command; stale data/contact loss
 releases the operator gripper. Physical feedback direction remains unverified.
+
+Gripper resistance engages above a 0.5 mm opening mismatch and releases at
+0.2 mm, reducing threshold chatter. Measured effort above the 0.02 deadband
+is reflected at unity gain up to the legacy SDK ceiling of 5.0 (5000 raw units).
+This ceiling does not request maximum effort continuously: a measured raw load
+of 145 requests 125 after the 20-unit deadband. The follower command remains
+200 raw units. These effort scales use
+the legacy Piper SDK convention; they are not calibrated fingertip force.
+Gripper feedback is independent of NEXT's six-joint contact flag. Commands
+update at 50 Hz; stale/missing gripper telemetry (100 ms), gripper faults,
+loss of load, or leaving TELEOP release resistance on the next control tick.
+The `TORQUE DIAG` log includes both gripper openings, raw measured efforts,
+status bytes, telemetry ages, the gate reason, and commanded effort. Use this
+to distinguish missing telemetry from a load below the configured threshold.
 
 Both arms are configured as firmware followers once at startup, while can1 is
 always the operator master in software. Startup waits for firmware and fresh
