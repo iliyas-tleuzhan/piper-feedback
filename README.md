@@ -1,353 +1,199 @@
-# FACTR NEXT: Neural External Torque Estimation
+# piper-feedback
 
-[Steven Oh](https://stevenoh2003.github.io)<sup>\*</sup>, [Jason Jingzhou Liu](https://jasonjzliu.com)<sup>\*</sup>, [Tony Tao](https://tony-tao.com)<sup>\*</sup>, [Philip Han](https://github.com/philiphan0109), [Kenneth Shaw](https://kennyshaw.net), [Satoshi Funabashi](https://sites.google.com/site/bashifunabashi/), [Ruslan Salakhutdinov](https://www.cs.cmu.edu/~rsalakhu/), [Deepak Pathak](https://www.cs.cmu.edu/~dpathak/)
+Piper X bilateral teleoperation and experimental force feedback over SocketCAN.
+Two arms, one operator: **can1 is the leader in software, can0 is the follower**.
+The feedback controller reflects estimated follower joint loads to the leader,
+while a separate native teleop mode provides ordinary following without feedback.
 
-_Carnegie Mellon University and Waseda University_
+This project focuses on the Piper control path: CAN commands, startup holds and
+alignment, gravity compensation, continuous joint torque reflection, gripper
+resistance, fault diagnostics, and offline controller tests. It preserves the
+`simulate-torque` development history and retains NEXT inference and training
+components from FACTR2. See [References and acknowledgments](#references-and-acknowledgments)
+for its origins and licensing.
 
-[Project Page](https://jasonjzliu.com/factr2/) | [arXiv](https://arxiv.org/abs/2606.12406)
+## Operating modes
 
-<p align="center">
-  <img src="assets/header_figure.png" alt="FACTR NEXT overview" width="900">
-</p>
+| Command | can1 firmware role | can0 firmware role | Behavior |
+| --- | --- | --- | --- |
+| `feedback` (default), `control`, `torque-feedback` | Slave / CAN MIT control | Slave / position control | Software leader/follower with NEXT joint feedback and gripper resistance |
+| `teleop` | Native master | Native slave | Plain arm and gripper following; no NEXT process or force feedback |
+| `native` | Native master | Native slave | Native teleop with NEXT observation only |
+| `monitor` | Unchanged | Unchanged | Passive controller inspection |
+| `check` | Unchanged | Unchanged | Offline configuration and artifact validation |
 
-## Overview
+“Leader” describes the operator's arm. In feedback mode **both firmware roles
+must be slave** so the PC can command them. The name `simulate-torque` does not
+mean a simulator: this controller sends commands to real motors.
 
-`factr2_next` is a ROS2 implementation of Neural External Torque Estimation (NEXT), a data-driven method for estimating external joint torque without dedicated force/torque sensors. NEXT learns the torque required for free-space robot motion from contact-free data, then estimates external torque at runtime as:
+## Hardware and environment
 
-```text
-tau_ext_hat = tau_measured - tau_free_hat
-```
+The current configuration targets two upright Piper X arms with standard grippers
+and **S-V1.8-9 firmware**, Ubuntu, Python 3.12, and ROS 2 Jazzy. The torque encoder
+is pinned to that firmware. Other hardware or firmware needs separate validation.
 
-This repository contains nodes for recording free-motion data, training NEXT models, running online inference, and visualizing the estimated torque signal. It also includes optional Piper/Gello teleoperation demo packages for testing force-feedback workflows on low-cost robot arms.
+- Two SocketCAN interfaces: `can1` for the operator arm and `can0` for the follower.
+- CAN links at **1,000,000 bit/s**, with transmit queues of at least **64** frames.
+- Piper X URDF and gripper xacro files for the gravity model.
+- A compatible trained NEXT checkpoint for feedback mode. Plain `teleop` does not
+  need a checkpoint or a running inference node.
 
-## Catalog
+Checkpoints, recorded datasets, Python environments, and ROS build products are
+not distributed here. Configurations contain paths from the development machine;
+**update them before running on another machine**.
 
-- [Repository Layout](#repository-layout)
-- [Install](#install)
-- [Sanity Check](#sanity-check)
-- [Data Recording](#data-recording)
-- [Training](#training)
-- [Inference](#inference)
-- [Visualization](#visualization)
-- [Adapting NEXT Without ROS](#adapting-next-without-ros)
-- [Optional Piper/Gello Teleop Demo](#optional-pipergello-teleop-demo)
-- [Optional FACTR2 Feedback Demo](#optional-factr2-feedback-demo)
-- [Hardware Notes](#hardware-notes)
-- [License and Acknowledgements](#license-and-acknowledgements)
-- [Citation](#citation)
-
-## Repository Layout
-
-- `src/factr2_next`: Core NEXT package for data recording, model training, online inference, and visualization.
-- `src/piper_control`: Optional Piper hardware interface used by the demo launch files.
-- `src/teacher_arm`: Optional Gello/Piper teacher-arm teleoperation package, including optional FACTR2 torque feedback.
-- `src/system_bringup`: Optional launch files for Piper/Gello teleoperation demos.
-
-## Install
-
-These instructions assume Ubuntu with ROS2 installed and sourced, Python 3.12, and `uv`. Development and testing were done with ROS2 Jazzy, but the core package uses standard ROS2 Python APIs and may work on other ROS2 distributions.
-
-Create and activate the Python environment:
+## Installation
 
 ```bash
-uv venv --python 3.12 --prompt ros .venv
+git clone https://github.com/iliyas-tleuzhan/piper-feedback.git
+cd piper-feedback
+uv venv --python 3.12 .venv
 source .venv/bin/activate
-```
-
-Install the core Python dependencies:
-
-```bash
 uv pip install pip wheel setuptools==79.0.1
 uv pip install colcon-core colcon-common-extensions
-uv pip install "numpy<2.0" pyyaml termcolor h5py torch cffi scipy
-```
-
-Note: PyTorch is installed through `uv` rather than `package.xml` so users can choose the CPU or CUDA wheel appropriate for their machine.
-
-For the optional Piper/Gello hardware demos, also install:
-
-```bash
+uv pip install 'numpy<2.0' pyyaml termcolor h5py torch cffi scipy
 uv pip install python-can piper-sdk==0.6.1 dynamixel-sdk==4.0.5 pyserial
-```
-
-The teacher-arm demo also uses Pinocchio from the ROS environment for inverse dynamics. If `import pinocchio` fails after sourcing ROS, install the matching ROS package, for example `sudo apt install ros-$ROS_DISTRO-pinocchio`.
-
-Build the workspace:
-
-```bash
-source /opt/ros/$ROS_DISTRO/setup.bash
+source /opt/ros/jazzy/setup.bash
 python -m colcon build --symlink-install
 source install/setup.bash
 ```
 
-In each new shell, source the environment before running ROS commands:
+Choose the appropriate PyTorch build for your CPU or CUDA environment. The
+bundled ROS package and Python import names remain `factr2_next` for compatibility;
+the GitHub repository name is `piper-feedback`.
+
+Before feedback operation, edit:
+
+- `config/piper_x_simulate_torque.yaml`: CAN interfaces, gravity model paths,
+  feedback gains and limits, gripper settings, and topic roots.
+- `config/piper_x_haptics.yaml`: native teleop configuration and offline setup inputs.
+- `src/factr2_next/factr2_next/config/inference.yaml`: checkpoint directory and topic roots.
+
+The checkpoint directory must contain `model.pt`, `normalization.npz`, and
+`config.yaml`. Controller and inference topic roots must agree. The current NEXT
+input pipeline publishes at 50 Hz. Rebuild after changing installed ROS resources
+as needed; do not assume a copied `install/` tree is portable.
+
+Configure the CAN adapters for 1 Mbit/s first. This helper only adjusts queue
+lengths; it does not configure bitrate, bring interfaces up, or move motors:
 
 ```bash
-source /opt/ros/$ROS_DISTRO/setup.bash
-source .venv/bin/activate
-source install/setup.bash
+sudo bash scripts/setup_piper_x_can.sh
+bash scripts/run_piper_x_haptics.sh check
 ```
 
-## Sanity Check
+## Run
 
-After building and sourcing the workspace, check that the package and console scripts are visible:
+Run only one controller at a time. Stop an existing controller before changing modes.
+
+### Plain teleop without feedback
 
 ```bash
-ros2 pkg list | grep -E "factr2_next|piper_control|teacher_arm|system_bringup"
-ros2 pkg executables factr2_next
-ros2 run factr2_next next_train --help
-python -c "import torch, h5py, yaml, numpy, rclpy; print('core deps ok')"
+bash scripts/run_piper_x_haptics.sh teleop
 ```
 
-`next_record`, `next_infer`, and `next_visualize` are runtime nodes. They require live topics, a valid checkpoint, or an open web port, so run them after configuring the corresponding YAML files.
+Can1 is the native master and can0 the native follower. Startup retains follower
+enables, captures a fresh measured pose, requests position hold, and confirms
+position mode before enabling any disabled joints. Can0 holds while the operator
+brings can1 within 15 degrees on every joint. A sampled alignment ramp then leads
+into native command forwarding. There is no initial slave-disable command.
+An arm that starts disabled needs support until its hold is established.
 
-## Data Recording
-
-Record contact-free robot motion with `next_record`. The default `record.yaml` records one robot or arm namespace, such as `/piper/right`, into an H5 file under `data/`.
+### Continuous feedback
 
 ```bash
-ros2 run factr2_next next_record
+bash scripts/run_piper_x_haptics.sh feedback
 ```
 
-Press `r` to start an episode and `r` again to stop it. Each episode is saved as `ep_0000`, `ep_0001`, etc. Each configured topic is written as:
+The launcher starts NEXT inference and the torque controller. Can1 receives
+gravity compensation, software damping, and gated joint feedback in MIT mode;
+can0 follows can1's measured joint angles. Both arms are requested as firmware
+slaves. The installed Piper SDK's role-switch example notes that switching from
+native master to slave requires an arm restart; follow the applicable firmware
+procedure rather than assuming the role write took effect immediately.
 
-```text
-ep_0000/<key>/data
-ep_0000/<key>/timestamps
-```
+Joint reflection uses the six NEXT external-torque estimates with contact and
+freshness gates, signed gains, caps, a buildup slew limit, and suppression of
+reflection that drives measured motion. A combined torque guard checks gravity,
+reflection, and damping before sending commands. See
+[PIPER_X_SIMULATE_TORQUE.md](PIPER_X_SIMULATE_TORQUE.md) for the controller details.
 
-For a single-arm setup, leave `record.yaml` in the default shape and change only the namespace:
+### Gripper feedback
 
-```yaml
-robot_topic_root: /piper/right
-topics:
-  joint_pos:
-    topic: "{robot_topic_root}/joint_pos_obs"
-    field: position
-```
+Gripper resistance uses the follower's measured effort and the difference in
+opening between the arms. It commands an effort-limited position target on the
+leader; **it is not a seventh NEXT estimate or direct signed MIT torque control**.
+It operates independently of the six-joint NEXT contact flag.
 
-For a bimanual setup, either record each arm into a separate file using different `robot_topic_root` values, or define explicit left/right keys in one recording config:
+Current defaults engage above 0.5 mm mismatch, release at 0.2 mm, subtract a
+20-raw-unit effort deadband, and use unity gain with a 5,000-raw-unit ceiling.
+The follower gripper command is still 200 raw units. Raising the feedback ceiling
+does not force maximum output: measured load still determines the command.
+Legacy SDK effort units are not calibrated fingertip force.
 
-```yaml
-topics:
-  left_joint_pos:
-    topic: /piper/left/joint_pos_obs
-    field: position
-  right_joint_pos:
-    topic: /piper/right/joint_pos_obs
-    field: position
-```
+Missing or stale gripper telemetry, faults, lost load, and leaving TELEOP release
+leader resistance. Negative opening readings currently fail the opening-range
+check, including small encoder offsets near closure. Logs expose these gates.
 
-The important rule is that the H5 keys you record must match the `keys` section in `train.yaml`.
+## Diagnostics and testing
 
-## Training
+`TORQUE DIAG` reports NEXT freshness, joint estimates, reflected torque, modeled
+and measured leader effort, and gripper opening, status, raw effort, age, gate,
+and last commanded effort. A native follower joint-limit fault reports the arm,
+one-based joint number, angle, limits, and controller phase.
 
-NEXT is trained on free-motion data. In the paper notation, the model learns the free-space torque term `tau_free_hat`; at runtime, external torque is the residual:
-
-```text
-tau_ext_hat = tau_measured - tau_free_hat
-```
-
-In code, `NextTorqueDataset._episode_arrays` builds each training input as:
-
-```text
-x_t = [joint_pos_t, joint_vel_t, joint_cmd_t - joint_pos_t]
-y_t = measured_joint_torque_t
-```
-
-The dataset then creates history windows of length `history`, and the model predicts the measured torque at the final timestep of each window. It is not predicting future torque.
-
-The default recurrent model uses `state_mode: stateless`, matching the paper's sliding-window LSTM: hidden state is reset for each history window, and online inference gets temporal context from the rolling `HistoryBuffer` rather than carrying an LSTM hidden state across the full stream.
-
-For the default single-arm recorder, use:
-
-```yaml
-arm_mode: single
-keys:
-  joint_pos: joint_pos
-  joint_vel: joint_vel
-  joint_cmd: joint_cmd
-  measured_joint_torque: measured_joint_torque
-```
-
-For bimanual H5 files with left/right key prefixes, use:
-
-```yaml
-arm_mode: both
-arms: [left, right]
-keys:
-  joint_pos: "{arm}_joint_pos"
-  joint_vel: "{arm}_joint_vel"
-  joint_cmd: "{arm}_joint_cmd"
-  measured_joint_torque: "{arm}_measured_joint_torque"
-```
-
-Train with:
+NEXT process output is written to `logs/piper_x_next.log`. Runtime logs are
+ignored in new commits; historical logs remain in the preserved Git history.
 
 ```bash
-ros2 run factr2_next next_train
+.venv/bin/python -m unittest discover -s scripts -p 'test_piper_x*.py'
+bash -n scripts/run_piper_x_haptics.sh
+bash scripts/run_piper_x_haptics.sh check
 ```
 
-Each run saves `model.pt`, `config.yaml`, `normalization.npz`, and `metrics.json` under `runs/`. When `arm_mode: both`, training writes one run per arm.
+The controller suite uses fake CAN sockets. The `check` command additionally
+requires local model files and the trained checkpoint. Neither validates physical
+force, gravity accuracy, stability, or firmware role switching on the real arms.
 
-## Inference
+On Ctrl-C or a fault, the current native and continuous-torque controllers request
+position holds; motors may remain enabled. Watchdog holds and CAN commands are
+best effort. Support the arms during setup and transitions and keep a hardware
+stop available. This is experimental research software, not a validated force
+controller.
 
-Inference loads a training run from `checkpoint_dir`, subscribes to the same input signals used during training, and keeps a rolling `HistoryBuffer`. Once the buffer is full, `InferenceNode._callback` predicts free-space torque and publishes:
+## Code map
 
-```text
-external_joint_torque_raw = measured_joint_torque - free_joint_torque_pred
-external_joint_torque     = smoothed external_joint_torque_raw
-```
+- `scripts/piper_x_simulate_torque.py`: continuous feedback controller and hold watchdog.
+- `scripts/piper_x_native_teleop.py`: native teleop, startup hold, alignment, and forwarding.
+- `scripts/piper_x_haptics.py`: shared CAN state, ROS inputs, command encoding integration, and validation.
+- `scripts/piper_x_haptic_core.py`: gravity model and feedback filtering/guards.
+- `scripts/piper_x_gripper_feedback.py`: gripper resistance and gate reasons.
+- `scripts/run_piper_x_haptics.sh`: mode selection.
+- `scripts/test_piper_x*.py`: offline regression coverage.
+- `src/factr2_next`: retained NEXT data collection, training, inference, and visualization.
 
-This is the runtime implementation of the NEXT residual equation above.
+Older `PIPER_X_*.md` documents retain development notes, including superseded
+role-switching modes and paths from the original checkout. Use this README and
+the current launcher as the entry point.
 
-Configure one inference node with namespace roots:
+## References and acknowledgments
 
-```yaml
-checkpoint_dir: /path/to/next_run_dir
-robot_topic_root: /piper/right
-next_topic_root: /next/right
-device: cpu
-```
+This is a separately maintained repository created from the `simulate-torque`
+branch, not a GitHub fork. Its Git ancestry, original authorship, and applicable
+license notices are preserved. It includes adapted FACTR2/NEXT code as well as
+Piper-specific controller work; the relationship is more than conceptual inspiration.
 
-Run inference with:
+- [FACTR2 / NEXT — philiphan0109/factr2_next](https://github.com/philiphan0109/factr2_next):
+  source of the retained NEXT estimation, training, and ROS infrastructure.
+- [FACTR Teleop](https://github.com/JasonJZLiu/FACTR_Teleop) and the
+  [FACTR paper](https://arxiv.org/abs/2502.17432): background on low-cost bilateral
+  teleoperation and force feedback, also credited by the upstream project.
+- [AgileX Piper SDK](https://github.com/agilexrobotics/piper_sdk): CAN protocol,
+  firmware-role configuration, and gripper command conventions.
+- [AgileX pyAgxArm](https://github.com/agilexrobotics/pyAgxArm): additional protocol
+  and firmware reference material.
+- [Piper X gravity-compensation implementation](https://github.com/kehuanjack/agilex-arm-gravity-compensation/tree/imp/piper_x):
+  reference for gravity torque with zero MIT stiffness/damping.
 
-```bash
-ros2 run factr2_next next_infer
-```
-
-For bimanual inference, run one inference node per arm with a different `checkpoint_dir`, `robot_topic_root`, and `next_topic_root`. The published raw residual is useful for debugging; the smoothed residual is what the normalized contact magnitude, contact hysteresis, and optional feedback demos consume.
-
-## Visualization
-
-`next_visualize` launches a local browser dashboard for live NEXT diagnostics. It starts a small HTTP server, `http://127.0.0.1:8080` by default, and serves a single canvas plot that receives live updates over server-sent events.
-
-```bash
-ros2 run factr2_next next_visualize
-```
-
-The dashboard subscribes to the topics configured in `visualize.yaml`, including filtered and raw external joint torque, predicted free-space torque, MSE, normalized contact magnitude, and contact state. If the optional FACTR2 feedback demo is running, it also plots feedback torque and feedback gate diagnostics. The checkboxes below the plot toggle summary signals, per-joint filtered/raw torques, and per-joint feedback outputs.
-
-## Adapting NEXT Without ROS
-
-NEXT does not require ROS. The ROS nodes in this repository provide recording, synchronization, and online transport, but the estimator only needs synchronized histories of joint position, joint velocity, commanded joint position, and measured motor torque.
-
-To adapt NEXT to another stack, preserve the contract `x_t = [joint_pos_t, joint_vel_t, joint_cmd_t - joint_pos_t]`, `y_t = measured_joint_torque_t`, and `tau_ext_hat = tau_measured - tau_free_hat`. Replace the ROS recorder, subscribers, and publishers with your system's native logging and runtime interfaces.
-
-Reusable pieces:
-
-- `training/dataset.py`: H5 windows.
-- `training/models.py`: regressors.
-- `training/train.py`: normalization and checkpoint saving.
-- `inference/checkpoint.py`: checkpoint loading.
-- `inference/history_buffer.py`: runtime input window.
-
-ROS-specific pieces to replace:
-
-- `data_collection/recorder_node.py`
-- `inference/inference_node.py`
-
-## Optional Piper/Gello Teleop Demo
-
-The Piper/Gello demo packages are provided to reproduce the hardware teleop setup used during development. They are not required for recording, training, or running NEXT on another robot.
-
-- `piper_control` runs the Piper hardware interface.
-- `teacher_arm` runs the Gello/Piper leader-follower teleop controller.
-- `system_bringup` provides launch files that start both pieces together.
-
-Before running the demo, edit the hardware-specific config files:
-
-- `src/piper_control/piper_control/configs/piper_arm.yaml`: set each Piper `can_port`, such as `can0` or `can1`.
-- `src/teacher_arm/teacher_arm/configs/piper_gellos.yaml`: set each Dynamixel serial `port` from `/dev/serial/by-id/`.
-
-For a single right-arm demo:
-
-```bash
-ros2 launch system_bringup right_arm_teleop.launch.py
-```
-
-For a bimanual demo:
-
-```bash
-ros2 launch system_bringup bimanual_teleop.launch.py
-```
-
-The launch files pass `name: right` or `name: left` into both nodes. Those names select the matching config blocks and produce topics such as `/piper/right/joint_pos_obs`, `/piper/right/joint_pos_cmd`, `/piper/left/joint_pos_obs`, and `/piper/left/joint_pos_cmd`.
-
-This teleop setup is inspired by the low-cost bilateral teleoperation system from the original [FACTR paper](https://arxiv.org/pdf/2502.17432), and includes similar controller features such as gravity compensation, static-friction dither, null-space regulation, joint-limit barriers, and gripper feedback. For the original FACTR teleop implementation, see [JasonJZLiu/FACTR_Teleop](https://github.com/JasonJZLiu/FACTR_Teleop).
-
-## Optional FACTR2 Feedback Demo
-
-The FACTR2 feedback demo is our Piper/Gello implementation of force feedback from NEXT. It is intentionally optional: the general idea can be adapted to any robot system that can read NEXT torque estimates and command some form of haptic or joint-level feedback.
-
-In this demo, `teacher_arm.factr2_feedback.Factr2TorqueFeedback` subscribes to:
-
-- `/next/{arm}/external_joint_torque`
-- `/next/{arm}/contact_state`
-
-It then computes a gated feedback torque for the teacher arm:
-
-```text
-gate_target = contact_state and inputs_are_fresh
-gate        = ramp_filter(gate, gate_target)
-tau_fb      = gate * gains * tau_ext - damping_gains * qdot_teacher
-tau_fb      = clip(tau_fb, -max_torque, max_torque)
-```
-
-For a safer and more robust user experience, this optional implementation applies contact with a ramp filter. Feedback is enabled only when NEXT detects contact. This prevents stale estimates or discontinuous torque commands from being applied abruptly. These gating and filtering safeguards are implementation features of the optional demo and were not used in the experiments reported in the FACTR2 paper.
-
-Enable the demo in `src/teacher_arm/teacher_arm/configs/piper_gellos.yaml`:
-
-```yaml
-factr2_torque_feedback:
-  enable: true
-  external_joint_torque_topic: "/next/{arm}/external_joint_torque"
-  contact_state_topic: "/next/{arm}/contact_state"
-  gains: [-0.06, -0.08, -0.08, -0.03, -0.03, -0.02]
-  damping_gains: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-  max_torque: [2.0, 2.0, 2.0, 2.0, 2.0, 2.0]
-```
-
-The gains are hardware- and sign-convention-dependent. Start small, verify the sign of each joint one at a time, and keep conservative `max_torque` limits until the feedback direction and magnitude are stable.
-
-`damping_gains` is included as a tuning hook, but defaults to zero because this demo primarily used proportional feedback from the estimated external torque.
-
-Typical workflow:
-
-```text
-1. Start Piper/Gello teleop.
-2. Start NEXT inference for the same arm.
-3. Confirm /next/{arm}/external_joint_torque and /next/{arm}/contact_state look sane.
-4. Enable FACTR2 feedback with small gains.
-5. Increase gains only after checking stability joint by joint.
-```
-
-For another robot, keep the same structure: estimate `tau_ext` with NEXT, convert it through a robot-specific feedback map, gate it on contact/freshness, clip it to safe limits, and send it to the hardware interface.
-
-## Hardware Notes
-
-This code can command real robot hardware. Before running hardware demos:
-
-- Keep `factr2_torque_feedback.enable: false` until teleop and NEXT inference are both working without feedback.
-- Start with small feedback `gains` and conservative `max_torque` limits.
-- Verify feedback signs one joint at a time before increasing gains.
-- Confirm `/next/{arm}/external_joint_torque` and `/next/{arm}/contact_state` are stable before enabling feedback.
-- Treat configs in this repository as demo defaults, not universally safe settings for every robot.
-
-## License and Acknowledgements
-
-This source code is licensed under the Apache 2.0 license found in [LICENSE](LICENSE).
-
-The optional Piper/Gello demos depend on upstream SDK packages installed through pip rather than vendored source code: `piper-sdk==0.6.1` (MIT) and `dynamixel-sdk==4.0.5` (Apache-2.0).
-
-## Citation
-
-If you use this codebase, please cite:
-
-```bibtex
-@article{oh2026factr2,
-  title   = {FACTR 2: Learning Force Sensing and Force-Aware Policies for Any Robot Arm},
-  author  = {Oh, Steven and Liu, Jason Jingzhou and Tao, Tony and Han, Philip and Shaw, Kenneth and Funabashi, Satoshi and Salakhutdinov, Ruslan and Pathak, Deepak},
-  year    = {2026}
-}
-```
+Distributed under the retained [Apache License 2.0](LICENSE). Original attribution
+and package metadata remain with the upstream components.

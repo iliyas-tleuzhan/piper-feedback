@@ -10,3 +10,7 @@ __pycache__/
 *.py[cod]
 .venv/
 .vscode/
+
+# Local telemetry and generated packaging metadata
+logs/
+*.egg-info/
