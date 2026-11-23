@@ -24,6 +24,63 @@ def state(c, now, master, slave=0., enabled=False):
 
 
 class NativeTests(unittest.TestCase):
+    def test_basic_startup_holds_without_disabling_then_aligns(self):
+        c=self.make();c.setup()
+        self.assertFalse(any(i==0x471 for i,_,d in frames(c.sockets[1])))
+        state(c,10.01,math.radians(30),slave=.1,enabled=True)
+        c.tick(10.01)
+        self.assertEqual(c.phase,'HOLD_STARTUP')
+        np.testing.assert_allclose(c.command,[.1,0,0,0,0,0],atol=1e-5)
+        state(c,10.02,math.radians(30),slave=.1,enabled=True)
+        c.tick(10.02)
+        self.assertEqual(c.phase,'WAIT_ALIGN')
+        held=c.command.copy()
+        for now in (10.1,10.7):
+            state(c,now,math.radians(30),slave=.11,enabled=True)
+            c.tick(now)
+            self.assertEqual(c.phase,'WAIT_ALIGN')
+            np.testing.assert_array_equal(c.command,held)
+        state(c,10.71,.1,slave=.1,enabled=True);c.tick(10.71)
+        self.assertEqual(c.phase,'ENABLING')
+        state(c,10.72,.1,slave=.1,enabled=True);c.tick(10.72)
+        self.assertEqual(c.phase,'ALIGNING')
+        state(c,10.73,.1,slave=.1,enabled=True);c.tick(10.73)
+        self.assertEqual(c.phase,'TELEOP')
+        self.assertFalse(any(i==0x471 for i,_,d in frames(c.sockets[1])))
+
+    def test_startup_seeds_hold_before_enabling_disabled_slave_without_master_target(self):
+        c=self.make();c.setup()
+        state(c,10.01,0.,slave=.1,enabled=False);c.target=None
+        c.tick(10.01)
+        self.assertFalse(any(i==0x471 for i,_,d in frames(c.sockets[1])))
+        state(c,10.02,0.,slave=.1,enabled=False);c.target=None
+        c.tick(10.02)
+        enables=[d for i,_,d in frames(c.sockets[1]) if i==0x471]
+        self.assertEqual([d[:2] for d in enables],[bytes([j,2]) for j in range(1,7)])
+        state(c,10.03,0.,slave=.1,enabled=True);c.target=None
+        c.tick(10.03)
+        self.assertEqual(c.phase,'WAIT_ALIGN')
+        state(c,10.04,0.,slave=.1,enabled=True);c.target=None
+        c.tick(10.04)
+        np.testing.assert_allclose(c.command,[.1,0,0,0,0,0],atol=1e-5)
+
+    def test_pose_fault_identifies_source_joint_and_angle(self):
+        for source in ('measured', 'target'):
+            c=self.make();state(c,10.01,0.,enabled=True)
+            q=np.zeros(6);q[4]=math.radians(100)
+            if source == 'measured':
+                for identifier,payload in joint_frames(q):
+                    c.states[1].frames[identifier+0x150]=(10.01,payload)
+            else:
+                c.target=q
+            with self.assertRaises(RuntimeError) as error:
+                c.tick(10.01)
+            message=str(error.exception)
+            self.assertIn('can0 measured' if source == 'measured' else 'leader target',message)
+            self.assertIn('joint 5: angle=100.000 deg',message)
+            self.assertIn('limits=[-89.000, 89.000] deg',message)
+            self.assertIn('tolerance=2.865 deg',message)
+
     def test_alignment_finishes_with_small_zero_offset_at_joint_limit(self):
         c=self.make()
         # Joint 2 reads -1.15 degrees near its nominal zero. This is inside

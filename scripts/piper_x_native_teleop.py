@@ -51,11 +51,12 @@ class NativeTeleop:
 
     def setup(self):
         self.owned = True
-        disable_joints(self.sockets[1]) # remove retained slave hold before alignment
+        self.hold_before_alignment = True
+        self.phase = 'HOLD_STARTUP'
         send(self.sockets[0], 0x470, [0xfa,0,0,0,0,0,0,0])
         send(self.sockets[1], 0x470, [0xfc,0,0,0,0,0,0,0])
         print('NATIVE: can1=MASTER (0xFA), can0=SLAVE (0xFC). NEXT estimates only; no reflected torque.', flush=True)
-        print('WAIT_ALIGN: slave disabled. Support it; move the master until all joints are within 15 degrees.', flush=True)
+        print('HOLD_STARTUP: retaining slave enables; waiting for measured pose to establish a position hold.', flush=True)
 
     def receive(self, index, frame, now):
         self.states[index].receive(frame, now)
@@ -79,7 +80,7 @@ class NativeTeleop:
         required = [*range(0x2a5,0x2a8),*range(0x261,0x267),0x2a1]
         timeout = self.feedback_timeout
         if not s.fresh(required, now, timeout) or not s.normal():
-            if self.phase in ('WAIT_ALIGN', 'WAIT_ROLE') and now-self.started < 3:
+            if self.phase in ('HOLD_STARTUP', 'WAIT_ALIGN', 'WAIT_ROLE') and now-self.started < 3:
                 return
             raise RuntimeError(f'Slave feedback missing/stale/faulted during {self.phase}: '
                                +s.diagnostic(now, required=required, max_age=timeout))
@@ -91,14 +92,52 @@ class NativeTeleop:
         if now-self.started > .5 and now-s.last_external_command < .1:
             raise RuntimeError('Another controller is sending slave commands')
         qs = s.q()
+        if self.phase == 'HOLD_STARTUP':
+            if self.command is None:
+                if np.any(qs < self.limits[:,0]-.05) or np.any(qs > self.limits[:,1]+.05):
+                    raise RuntimeError('Slave startup pose outside Piper X limits; hold not commanded')
+                self.command = qs.copy()
+                self.transition = now
+                from piper_x_simulate_torque import request_hold
+                request_hold(self.sockets[1], self.command)
+                return
+            self.send_position(self.command)
+            stamp, status = s.frames[0x2a1]
+            if now-self.transition > 2:
+                raise RuntimeError('Slave startup position hold acknowledgement timed out: '+s.diagnostic(now))
+            if not (stamp > self.transition and status[0] == 1 and status[2] == 1):
+                return
+            if not s.enabled():
+                if now-self.last_enable >= .1:
+                    for joint in range(1,7):
+                        if not s.frames[0x260+joint][1][5] & 0x40:
+                            send(self.sockets[1],0x471,[joint,2,0,0,0,0,0,0])
+                    self.last_enable = now
+                return
+            self.phase = 'WAIT_ALIGN'
+            self.sample_since = None
+            print('WAIT_ALIGN: slave holds its startup pose; move the master within 15 degrees to begin alignment.', flush=True)
+            return
+        if self.phase == 'WAIT_ALIGN' and getattr(self, 'hold_before_alignment', False):
+            if not s.enabled():
+                raise RuntimeError('Slave driver enable lost while holding for alignment')
+            self.send_position(self.command)
         if self.target is None:
             if now-self.last_log > 2:
                 self.last_log = now
                 print('WAIT_ALIGN: waiting for native master 0x155/156/157; gently move master.', flush=True)
             return
-        for q in (qs, self.target):
-            if np.any(q < self.limits[:,0]-.05) or np.any(q > self.limits[:,1]+.05):
-                raise RuntimeError('Joint pose outside Piper X limits')
+        for source, q in ((f'{self.cfg["slave_can"]} measured', qs), ('leader target', self.target)):
+            outside = np.flatnonzero((q < self.limits[:,0]-.05) | (q > self.limits[:,1]+.05))
+            if outside.size:
+                details = []
+                for j in outside:
+                    low, high = np.degrees(self.limits[j])
+                    details.append(f'joint {j+1}: angle={math.degrees(q[j]):.3f} deg, '
+                                   f'limits=[{low:.3f}, {high:.3f}] deg')
+                raise RuntimeError('Joint pose outside Piper X limits: '
+                                   f'{source}; '+ '; '.join(details)+
+                                   f'; tolerance={math.degrees(.05):.3f} deg; phase={self.phase}')
         # Port of piper-wireless-teleop startup: sampled pose, <=15 degrees,
         # fixed target, 0.3 degree steps at 50 Hz, 10 second alignment timeout.
         tolerance = math.radians(15)
