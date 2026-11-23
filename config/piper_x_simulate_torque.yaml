@@ -44,8 +44,9 @@ gripper_follow_effort: 200
 gripper_feedback:
   enabled: true
   max_opening_um: 95000
-  gap_um: 2000
-  deadband_nm: 0.05
-  gain: 0.5
-  max_effort_nm: 0.1
+  gap_um: 500 # Engage at >0.5 mm mismatch.
+  release_gap_um: 200 # Release at <=0.2 mm to avoid threshold chatter.
+  deadband_nm: 0.02
+  gain: 1.0
+  max_effort_nm: 5.0 # Legacy Piper SDK command ceiling: 5000 raw units; not calibrated fingertip force.
   timeout: 0.1

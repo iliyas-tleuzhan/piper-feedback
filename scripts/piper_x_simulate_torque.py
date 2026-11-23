@@ -56,18 +56,41 @@ class TorqueTeleop(Controller):
 
     def update_gripper_feedback(self, now):
         cfg = self.cfg.get('gripper_feedback', {})
-        if not cfg.get('enabled'):
+        was_active = getattr(self, 'gripper_feedback_effort', 0) > 0
+        if not cfg.get('enabled') and not was_active:
+            self.gripper_feedback_reason = 'disabled'
             return
-        if now-getattr(self,'last_gripper_feedback',-math.inf) < .02:
+        command = bytes(8)
+        reason = 'disabled' if not cfg.get('enabled') else 'outside TELEOP'
+        if cfg.get('enabled') and self.mode == 'TELEOP':
+            reason = 'missing or stale telemetry'
+            if all(st.fresh([0x2a8],now,cfg['timeout']) for st in self.states):
+                from piper_x_gripper_feedback import evaluate
+                command, reason = evaluate(self.states[0].frames[0x2a8][1],
+                                           self.states[1].frames[0x2a8][1],cfg,was_active)
+        self.gripper_feedback_reason = reason
+        # Check release every control tick, even between 50 Hz command updates.
+        if now-getattr(self,'last_gripper_feedback',-math.inf) < .02 and not (was_active and command == bytes(8)):
             return
         self.last_gripper_feedback = now
-        command = bytes(8)
-        if self.mode == 'TELEOP' and all(st.fresh([0x2a8],now,cfg['timeout']) for st in self.states):
-            from piper_x_gripper_feedback import resistance
-            command = resistance(self.states[0].frames[0x2a8][1],
-                                 self.states[1].frames[0x2a8][1],cfg)
         send(self.sockets[0],0x159,command)
         self.gripper_feedback_effort = int.from_bytes(command[4:6],'big')/1000
+
+    def gripper_diagnostic(self, now):
+        readings = []
+        for label, state in zip(('can1', 'can0'), self.states):
+            frame = state.frames.get(0x2a8)
+            if frame is None:
+                readings.append(f'{label}=missing')
+                continue
+            stamp, data = frame
+            opening = int.from_bytes(data[:4], 'big', signed=True)/1000
+            effort = int.from_bytes(data[4:6], 'big', signed=True)
+            readings.append(f'{label} opening_mm={opening:.3f} effort_raw={effort} '
+                            f'status=0x{data[6]:02x} age_ms={(now-stamp)*1000:.1f}')
+        return ('; gripper: '+ '; '.join(readings)+
+                f'; gate={getattr(self,"gripper_feedback_reason","inactive")}'
+                f'; command_effort_raw={round(getattr(self,"gripper_feedback_effort",0)*1000)}')
 
     def feedback_diagnostic(self, now, torque):
         def values(v):
@@ -85,7 +108,7 @@ class TorqueTeleop(Controller):
             f'reflected Nm={values(torque)}; '
             f'reflection blocked joints={np.flatnonzero(self.reflection_motion_gate.blocked).tolist() if hasattr(self,"reflection_motion_gate") else []} (zero-based); '
             f'can1 modeled total Nm={values(self.master_expected_torque)}; '
-            f'can1 measured Nm={values(measured)}')
+            f'can1 measured Nm={values(measured)}'+self.gripper_diagnostic(now))
 
     def startup(self, now):
         """Retain enabled joints; support can1 and hold can0 before following."""
@@ -273,10 +296,10 @@ class TorqueTeleop(Controller):
         if f.command is not None:
             self.command = f.command
         self.qs = s.q()
+        self.update_gripper_feedback(now)
         if self.mode != 'TELEOP':
             self.prev_sample = None
             return
-        self.update_gripper_feedback(now)
         if m.fresh([0x2a8],now,.5):
             # Follow observed opening only, never a retained command that could
             # keep the follower closed while the operator opens the gripper.
