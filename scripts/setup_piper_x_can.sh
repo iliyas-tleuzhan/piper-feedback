@@ -5,10 +5,10 @@ if [[ $EUID -ne 0 ]]; then
   echo "Run: sudo bash scripts/setup_piper_x_can.sh" >&2
   exit 1
 fi
-for channel in can1 can0; do
+for channel in can_master can_slave; do
   ip link show dev "$channel" >/dev/null
 done
-for channel in can1 can0; do
+for channel in can_master can_slave; do
   ip link set dev "$channel" txqueuelen 64
   ip -details link show dev "$channel"
 done

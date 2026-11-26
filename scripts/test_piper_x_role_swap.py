@@ -78,7 +78,7 @@ class RoleTests(unittest.TestCase):
         c.transition('teleop')
         self.assertIs(c.controller.sockets[0], c.sockets[0])
 
-    def test_can0_is_always_captured_and_pretransition_packets_ignored(self):
+    def test_follower_is_always_captured_and_pretransition_packets_ignored(self):
         import struct
         c = self.make()
         for mode in ('teleop', 'feedback'):
@@ -223,7 +223,7 @@ class RoleTests(unittest.TestCase):
         pipe.recv.side_effect = [(1,[.1]*6), EOFError()]
         sockets = [Mock(),Mock()]
         with patch('piper_x_role_swap.bus', side_effect=sockets):
-            hold_watchdog(pipe,['can1','can0'])
+            hold_watchdog(pipe,['can_master','can_slave'])
         sockets[0].send.assert_not_called()
         self.assertEqual([i for i,_,_ in frames(sockets[1])], [0x155,0x156,0x157])
         for sock in sockets:sock.close.assert_called_once()

@@ -1,7 +1,7 @@
 # Continuous torque reflection; signed gains require physical direction validation.
 # Two upright Piper X arms, standard grippers; verified S-V1.8-9 firmware.
-master_can: can1
-slave_can: can0
+master_can: can_master
+slave_can: can_slave
 firmware: S-V1.8-9
 robot_topic_root: /next_capture/piper_x_follower
 next_topic_root: /next/piper_x_follower
@@ -23,8 +23,8 @@ master_max_velocity: 1.5
 # Gravity compensation and gated contact reflection use the same torque path.
 master_damping: [0.1, 0.1, 0.08, 0.03, 0.03, 0.02]
 master_total_torque_limit: [8.0, 14.0, 10.0, 3.0, 3.0, 2.0]
-gravity_urdf: /home/dase-hw101/agx_arm_ws/src/agx_arm_ros/src/agx_arm_description/agx_arm_urdf/piper_x/urdf/piper_x_description.urdf
-gripper_xacro: /home/dase-hw101/agx_arm_ws/src/agx_arm_ros/src/agx_arm_description/agx_arm_urdf/piper_x/urdf/piper_x_with_gripper_description.xacro
+gravity_urdf: assets/piper_x/piper_x_description.urdf
+gripper_xacro: assets/piper_x/piper_x_with_gripper_description.xacro
 feedback:
   # Oppose the estimated slave joint torque; unity magnitude before limits.
   gains: [-1.0, -1.0, -1.0, -1.0, -1.0, -1.0]

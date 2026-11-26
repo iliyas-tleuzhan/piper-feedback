@@ -1,0 +1,14 @@
+setuptools==79.0.1
+wheel
+colcon-common-extensions
+numpy<2
+scipy
+PyYAML
+termcolor
+h5py
+torch
+cffi
+python-can
+piper-sdk==0.6.1
+dynamixel-sdk==4.0.5
+pyserial

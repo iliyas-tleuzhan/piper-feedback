@@ -33,7 +33,7 @@ class TorqueTests(unittest.TestCase):
         report=c.feedback_diagnostic(10.,c.feedback.value)
         self.assertIn('contact age_ms=1000.0',report)
         self.assertIn('reflected Nm=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0]',report)
-        self.assertIn('can1 gravity Nm=',report)
+        self.assertIn('can_master gravity Nm=',report)
         self.assertIn('NEXT filtered residual Nm=',report)
 
     def test_startup_retains_enabled_joints_and_only_enables_disabled_joints(self):

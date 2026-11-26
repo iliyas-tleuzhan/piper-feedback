@@ -14,3 +14,6 @@ __pycache__/
 # Local telemetry and generated packaging metadata
 logs/
 *.egg-info/
+
+# Local Piper X robot description files
+assets/piper_x/

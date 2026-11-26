@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""NEXT-triggered native role reversal; physical can0 is always observed."""
+"""NEXT-triggered native role reversal; physical can_slave is always observed."""
 import argparse
 import fcntl
 import math
@@ -19,6 +19,7 @@ from piper_x_native_teleop import NativeTeleop
 from piper_x_timing import Periodic, LoopRate
 
 ROOT = Path(__file__).resolve().parents[1]
+CHANNELS = ('can_master', 'can_slave')
 
 
 def hold_watchdog(pipe, channels):
@@ -134,7 +135,7 @@ class RoleSwap:
         self.gate.reset()
         self.feedback_armed = not live_handover
         self.next_warmup_started = None
-        print(f'{mode.upper()}: requesting can{1-master} master -> can{1-slave} slave; '
+        print(f'{mode.upper()}: requesting {CHANNELS[master]} master -> {CHANNELS[slave]} slave; '
               'waiting for fresh native targets and telemetry.', flush=True)
 
     def snapshot(self):
@@ -171,7 +172,7 @@ class RoleSwap:
             return
         master, _ = role_indices(self.mode)
         self.controller.receive(0 if physical == master else 1, frame, arrival)
-        if physical == 1:  # Physical can0, regardless of role.
+        if physical == 1:  # Physical can_slave, regardless of role.
             import struct
             identifier, size, data = struct.unpack('=IB3x8s', frame)
             self.capture.receive(identifier, data[:size], arrival)
@@ -185,7 +186,7 @@ class RoleSwap:
         if self.controller.phase != 'TELEOP' and self.mode != 'feedback':
             return
         if self.gate.last is None:
-            print(f'NEXT ONLINE: can0 predictions received after {self.published_samples} input samples.', flush=True)
+            print(f'NEXT ONLINE: can_slave predictions received after {self.published_samples} input samples.', flush=True)
         self.last_estimate_stamp = stamp
         proposed = self.gate.update(msg.position, now, self.mode)
         if self.mode == 'teleop' and not self.feedback_armed:
@@ -239,7 +240,7 @@ class RoleSwap:
                 self.transition('teleop')
                 return True
             master, slave = role_indices(self.mode)
-            raise RuntimeError(f'{self.mode}: can{1-master} master, can{1-slave} slave: {exc}') from exc
+            raise RuntimeError(f'{self.mode}: {CHANNELS[master]} master, {CHANNELS[slave]} slave: {exc}') from exc
         if c.phase == 'TELEOP':
             # Native controller already checks status, enable, pose and tracking.
             if c.states[1].frames[0x2a1][1][0] != 1:
@@ -270,8 +271,8 @@ def main():
     cfg = yaml.safe_load(args.config.read_text())
     validate(cfg)
     native_cfg = yaml.safe_load((ROOT/'config/piper_x_haptics.yaml').read_text())
-    if (native_cfg['master_can'], native_cfg['slave_can']) != ('can1', 'can0'):
-        raise ValueError('Role switching requires physical can1 operator and can0 environment arms')
+    if (native_cfg['master_can'], native_cfg['slave_can']) != CHANNELS:
+        raise ValueError('Role switching requires physical can_master operator and can_slave environment arms')
     import rclpy
     from rclpy.signals import SignalHandlerOptions
     from rclpy.qos import qos_profile_sensor_data
@@ -288,11 +289,11 @@ def main():
         with open(LOCK, 'w') as lock:
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
             try:
-                for channel in ('can1', 'can0'):
+                for channel in CHANNELS:
                     sockets.append(bus(channel))
                 ctx = mp.get_context('spawn')
                 receiver, pipe = ctx.Pipe(duplex=False)
-                guard = ctx.Process(target=hold_watchdog, args=(receiver, ['can1', 'can0']))
+                guard = ctx.Process(target=hold_watchdog, args=(receiver, CHANNELS))
                 guard.start()
                 receiver.close()
                 pipe.send(True)

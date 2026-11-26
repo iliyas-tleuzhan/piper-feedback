@@ -1,7 +1,7 @@
 # Piper X CAN teleoperation
 
 Standalone Python 3 relay for the two independently connected arms:
-master **can1**, slave **can0**. No ROS environment or Python packages needed.
+master **can_master**, slave **can_slave**. No ROS environment or Python packages needed.
 The existing `teacher_arm/piper_teleop.py` uses a Gello teacher, so this script
 instead uses the native Piper X teaching packets already observed on your master.
 
@@ -32,7 +32,7 @@ python3 scripts/piper_x_can_teleop.py
 The relay copies `0x155`, `0x156`, `0x157` (six joint targets) and `0x159`
 (gripper command, including the master's gripper enable/effort fields) unchanged.
 Use `--no-gripper` to exclude the gripper. Interface names can be overridden with
-`--master can1 --slave can0`.
+`--master can_master --slave can_slave`.
 
 It does not relay feedback, mode changes, calibration, MIT torque packets or
 arbitrary CAN traffic. There is no force feedback or NEXT inference. It forwards

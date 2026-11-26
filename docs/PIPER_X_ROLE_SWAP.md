@@ -6,10 +6,10 @@ The default launcher implements the requested state cycle:
 
 | Mode | Master | Slave | Command rate |
 | --- | --- | --- | --- |
-| teleop | can1 | can0 | 250 Hz |
-| feedback | can0 | can1 | 50 Hz (from the whiteboard) |
+| teleop | can_master | can_slave | 250 Hz |
+| feedback | can_slave | can_master | 50 Hz (from the whiteboard) |
 
-NEXT always observes physical **can0**, with the existing checkpoint and 50 Hz
+NEXT always observes physical **can_slave**, with the existing checkpoint and 50 Hz
 input format. Contact enters feedback; sustained release returns to teleop.
 The cycle continues until Ctrl-C or a fault. The six arm joints are followed;
 native gripper commands (0x159) are forwarded after following starts.
@@ -27,7 +27,7 @@ Native role reversal mirrors joint motion caused by contact. It does not command
 the measured external torque at the operator arm, and a force that causes no
 motion may produce no mirrored motion. The NEXT checkpoint was trained with
 follower command/current data; its contact accuracy in native master mode has
-not been validated. Native master can0 must still emit complete position,
+not been validated. Native master can_slave must still emit complete position,
 current, and native command frames. Missing inputs/predictions stop operation;
 there is no fabricated command or position fallback. A stationary native master
 that stops publishing commands can therefore cause a NEXT timeout.
@@ -39,7 +39,7 @@ requests joint disable before reconfiguration, and this program supplies no
 gravity compensation to a disabled arm.
 
 ```bash
-cd /home/dase-hw101/Iliyas/factr2_next
+cd /path/to/piper-feedback
 bash scripts/run_piper_x_haptics.sh control
 ```
 
@@ -47,7 +47,7 @@ bash scripts/run_piper_x_haptics.sh control
 observation-only NEXT; `torque-feedback` selects the previous experimental MIT
 controller. Stop other controllers, inference instances and bridges first.
 The launcher checks CAN queues and starts one inference process and one switching
-controller. The switching controller publishes the can0 NEXT inputs itself.
+controller. The switching controller publishes the can_slave NEXT inputs itself.
 Inference logs go to `logs/piper_x_next.log`.
 
 Edit `config/piper_x_role_swap.yaml` for rates, thresholds and dwell times.
@@ -94,10 +94,10 @@ CAN loss, power loss, motor faults, or firmware timeout can prevent holding.
 This policy applies to `control`/`feedback`, not the legacy `native`/MIT controllers
 or the standalone role-setting utility.
 
-NEXT command inputs on can0 in teleop come from successfully sent command bytes:
+NEXT command inputs on can_slave in teleop come from successfully sent command bytes:
 SocketCAN does not echo the sender's own frames by default. In feedback, native
-can0 master commands are received normally. Position/current always come from
-real can0 telemetry. Input publishing uses a phase-preserving 50 Hz schedule.
+can_slave master commands are received normally. Position/current always come from
+real can_slave telemetry. Input publishing uses a phase-preserving 50 Hz schedule.
 The console prints NEXT ONLINE when the first valid prediction is accepted.
 
 ## Standalone role requests
@@ -127,7 +127,7 @@ python3 -m unittest discover -s scripts -p 'test_piper_x*.py'
 ```
 
 Tests use simulated sockets, including role bytes/order, repeated contact cycles,
-hysteresis/dwell, stale/invalid predictions, physical can0 routing, cache resets,
+hysteresis/dwell, stale/invalid predictions, physical can_slave routing, cache resets,
 missing native targets and stale NEXT faults. They do not validate firmware hot
 switching, torque accuracy in teaching mode, or physical feedback behavior.
 
@@ -157,18 +157,18 @@ Reverse-controller faults also request return to default teleop roles. A new
 pulse requires a fresh release estimate after return; persistent contact cannot
 immediately re-trigger and trap the operator in repeated role reversal. Failure
 to establish default roles still enters HOLD; software cannot guarantee that
-firmware makes can1 backdrivable. Inference may need to rewarm after a role gap,
+firmware makes can_master backdrivable. Inference may need to rewarm after a role gap,
 so the pulse cap can cause return before any reverse movement occurs.
 
-Role reversal still mirrors motion, not measured torque. A blocked can0 that
+Role reversal still mirrors motion, not measured torque. A blocked can_slave that
 does not move may produce no tactile cue. NEXT accuracy in native master mode
 and live firmware role-switch latency require physical validation.
 
 Return-to-teleop mismatch recovery: if fresh default-role targets differ from
-can0's measured pose by more than 15°, the controller now reports all six joint
+can_slave's measured pose by more than 15°, the controller now reports all six joint
 differences and enters RECOVER TELEOP / WAIT_ALIGN instead of persistent fault
-HOLD. It sends can0 its current pose as a hold target, then waits for the operator
-to bring can1 within 15° and runs the startup ramp before forwarding again.
+HOLD. It sends can_slave its current pose as a hold target, then waits for the operator
+to bring can_master within 15° and runs the startup ramp before forwarding again.
 Normal close-pose switches still skip alignment, and feedback never aligns.
 Other faults still use HOLD. This avoids a jump but does not guarantee automatic
 recovery from incompatible firmware roles or explain a measured pose mismatch.

@@ -1,9 +1,11 @@
+> Historical development notes. See [the README](../README.md) for the current launcher and installation workflow.
+
 The default launcher mode is feedback, with **both arms as firmware slaves**.
-`control` also selects feedback. For plain teleop with can1 firmware master
-and can0 slave, explicitly use:
+`control` also selects feedback. For plain teleop with can_master firmware master
+and can_slave slave, explicitly use:
 
 ```bash
-cd /home/dase-hw101/Iliyas/factr2_next
+cd /path/to/piper-feedback
 bash scripts/run_piper_x_haptics.sh teleop
 ```
 
@@ -20,22 +22,22 @@ Use `feedback` explicitly for continuous torque reflection.
 # Native Piper X master/slave teleop and NEXT estimation
 
 For fixed-role operation, the `native` command uses `scripts/piper_x_native_teleop.py`:
-**can1 remains native master (0xFA); can0 is follower (0xFC)**. It never sends MIT
+**can_master remains native master (0xFA); can_slave is follower (0xFC)**. It never sends MIT
 or position-mode commands to the master. This replaces the earlier controller
 that changed both arms into follower/CAN torque mode.
 
 Stop old controllers and support both arms before starting or stopping.
 
 ```bash
-cd /home/dase-hw101/Iliyas/factr2_next
+cd /path/to/piper-feedback
 # Once after adapter reconnect/reboot, if queues have returned to 10:
 sudo bash scripts/setup_piper_x_can.sh
 # Start native teleop, passive slave data bridge, and NEXT inference:
 bash scripts/run_piper_x_haptics.sh native
 ```
 
-No arming keys are required. Startup selects native master on can1 and follower
-on can0 without disabling the slave. Once fresh measured state is available,
+No arming keys are required. Startup selects native master on can_master and follower
+on can_slave without disabling the slave. Once fresh measured state is available,
 it seeds a fixed position hold, confirms position mode, and enables any disabled
 slave joints. It holds that pose while waiting for the master's native targets
 (0x155–0x157) to be within 15 degrees, then runs the alignment ramp and teleop.
@@ -78,14 +80,14 @@ is not a substitute for mechanical support or the hardware stop.
 There is now a separate, explicit command for the software-master torque path:
 
 ```bash
-cd /home/dase-hw101/Iliyas/factr2_next
+cd /path/to/piper-feedback
 sudo bash scripts/setup_piper_x_can.sh
 bash scripts/run_piper_x_haptics.sh torque-feedback
 ```
 
 Stop other controllers first and support both arms during startup and shutdown.
-This command **changes can1 to firmware follower/CAN MIT mode**. Can1 remains
-the operator's master in software: its measured angles drive can0, and its
+This command **changes can_master to firmware follower/CAN MIT mode**. The master interface remains
+the operator's master in software: its measured angles drive can_slave, and its
 motors receive gravity compensation plus bounded NEXT feedback. Both arms
 publish normal measured feedback frames; these are intentional in this path.
 Native master mode and this software-master mode are different operating modes.

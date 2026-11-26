@@ -1,8 +1,8 @@
 data:
   train_h5_paths:
-    - /home/dase-hw101/Iliyas/factr2_next/data/prepared_20261112_171655/train.h5
+    - data/prepared/train.h5
   val_h5_paths:
-    - /home/dase-hw101/Iliyas/factr2_next/data/prepared_20261112_171655/val.h5
+    - data/prepared/val.h5
 
   val_episodes: all
   train_episodes: all

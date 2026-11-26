@@ -1,4 +1,4 @@
-# Physical interfaces are fixed: can1 operator arm, can0 environment arm.
+# Physical interfaces are fixed: can_master operator arm, can_slave environment arm.
 teleop_hz: 250
 feedback_hz: 50
 # L1 norm (sum of absolute values) of NEXT filtered external torque, in Nm.

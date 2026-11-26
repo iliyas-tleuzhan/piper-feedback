@@ -1,6 +1,6 @@
 # Directory created by next_train. It must contain:
 #   model.pt, config.yaml, normalization.npz
-checkpoint_dir: /home/dase-hw101/Iliyas/factr2_next/runs/piper_x_free_torque_single_20261112_173218
+checkpoint_dir: runs/piper_x_checkpoint
 
 # Root namespaces. For another robot or arm, these are usually the only topic
 # roots you need to change.

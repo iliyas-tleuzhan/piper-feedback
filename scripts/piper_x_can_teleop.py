@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Relay native Piper X leader commands from can1 to can0 (Linux, stdlib only).
+"""Relay native Piper X leader commands from can_master to can_slave (Linux, stdlib only).
 
 The master must already be in native teaching/leader mode. Only standard
 8-byte joint targets (0x155..0x157) and gripper commands (0x159) are relayed.
@@ -63,8 +63,8 @@ def aligned(master, slave, now, tolerance=7.0):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--master', default='can1')
-    parser.add_argument('--slave', default='can0')
+    parser.add_argument('--master', default='can_master')
+    parser.add_argument('--slave', default='can_slave')
     parser.add_argument('--no-gripper', action='store_true')
     parser.add_argument('--enable-slave', action='store_true', help=
                         'Configure slave as CAN MOVE J and enable its six joints '

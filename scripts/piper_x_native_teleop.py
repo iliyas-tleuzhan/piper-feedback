@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Automatic native-leader Piper X teleop; no master MIT/follower commands.
 
-can1 stays native leader (0xFA), can0 follower (0xFC). NEXT is observation only.
+can_master stays native leader (0xFA), can_slave follower (0xFC). NEXT is observation only.
 """
 import argparse
 import fcntl
@@ -55,7 +55,7 @@ class NativeTeleop:
         self.phase = 'HOLD_STARTUP'
         send(self.sockets[0], 0x470, [0xfa,0,0,0,0,0,0,0])
         send(self.sockets[1], 0x470, [0xfc,0,0,0,0,0,0,0])
-        print('NATIVE: can1=MASTER (0xFA), can0=SLAVE (0xFC). NEXT estimates only; no reflected torque.', flush=True)
+        print('NATIVE: can_master=MASTER (0xFA), can_slave=SLAVE (0xFC). NEXT estimates only; no reflected torque.', flush=True)
         print('HOLD_STARTUP: retaining slave enables; waiting for measured pose to establish a position hold.', flush=True)
 
     def receive(self, index, frame, now):
@@ -159,8 +159,8 @@ class NativeTeleop:
                     self.skip_alignment = False
                     self.phase = 'WAIT_ALIGN'
                     self.sample_since = None
-                    print('RECOVER TELEOP: '+details+'. Slave hold target sent; move can1 '
-                          'within 15 degrees of can0 to resume via the startup ramp.', flush=True)
+                    print('RECOVER TELEOP: '+details+'. Slave hold target sent; move can_master '
+                          'within 15 degrees of can_slave to resume via the startup ramp.', flush=True)
                     return
                 raise RuntimeError('Role handover pose mismatch exceeds 15 degrees; '+details)
             self.command = qs.copy()

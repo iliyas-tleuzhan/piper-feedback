@@ -49,7 +49,7 @@ class Capture:
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--can', default='can0')
+    parser.add_argument('--can', default='can_slave')
     parser.add_argument('--namespace', default='/next_capture/piper_x_follower')
     parser.add_argument('--feedback-base', type=lambda s: int(s, 0),
                         choices=[0x2A5, 0x2B5, 0x2C5], default=0x2A5)

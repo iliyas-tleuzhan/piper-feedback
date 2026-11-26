@@ -76,7 +76,7 @@ class NativeTests(unittest.TestCase):
             with self.assertRaises(RuntimeError) as error:
                 c.tick(10.01)
             message=str(error.exception)
-            self.assertIn('can0 measured' if source == 'measured' else 'leader target',message)
+            self.assertIn('can_slave measured' if source == 'measured' else 'leader target',message)
             self.assertIn('joint 5: angle=100.000 deg',message)
             self.assertIn('limits=[-89.000, 89.000] deg',message)
             self.assertIn('tolerance=2.865 deg',message)

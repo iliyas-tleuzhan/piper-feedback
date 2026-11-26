@@ -67,7 +67,7 @@ class AutoTests(unittest.TestCase):
         pipe.recv.side_effect = [True, EOFError()]
         sockets = [Mock(), Mock()]
         with patch('piper_x_haptics.bus', side_effect=sockets), patch('piper_x_haptics.time.sleep'):
-            watchdog(pipe, ['can1', 'can0'])
+            watchdog(pipe, ['can_master', 'can_slave'])
         for sock in sockets:
             p = packets(sock)
             self.assertEqual(len(p), 18)

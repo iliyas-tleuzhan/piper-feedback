@@ -46,7 +46,7 @@ class GripperTests(unittest.TestCase):
         c.update_gripper_feedback(10.)
         self.assertIn('gate=missing or stale telemetry',c.gripper_diagnostic(10.))
         c.states[1].frames[0x2a8]=(10.,frame(20000,80))
-        self.assertIn('can0 opening_mm=20.000 effort_raw=80 status=0x40',c.gripper_diagnostic(10.))
+        self.assertIn('can_slave opening_mm=20.000 effort_raw=80 status=0x40',c.gripper_diagnostic(10.))
 
     def test_invalid_hysteresis_rejected(self):
         for value in (-1, G['gap_um']+1, float('nan')):

@@ -20,7 +20,7 @@ def role_indices(mode):
 
 
 def swap_roles(sockets, mode, *, disable=True):
-    """Sockets stay ordered [can1, can0]; caller must stop all forwarding first."""
+    """Sockets stay ordered [can_master, can_slave]; caller must stop all forwarding first."""
     master, slave = role_indices(mode)
     if disable:
         for sock in sockets:
@@ -36,7 +36,7 @@ def main():
     parser.add_argument('--dry-run', action='store_true')
     args = parser.parse_args()
     master, slave = role_indices(args.mode)
-    channels = ['can1', 'can0']
+    channels = ['can_master', 'can_slave']
     print(f'{args.mode}: {channels[master]} master, {channels[slave]} slave')
     if args.dry_run:
         return

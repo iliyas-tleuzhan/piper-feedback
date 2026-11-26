@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Continuous NEXT torque reflection with fixed software master/slave roles.
 
-Master can1 runs MIT gravity compensation plus bounded reflected torque.
-Slave can0 follows measured can1 angles. No runtime role swaps.
+Master can_master runs MIT gravity compensation plus bounded reflected torque.
+Slave can_slave follows measured can_master angles. No runtime role swaps.
 """
 import math
 import multiprocessing as mp
@@ -78,7 +78,7 @@ class TorqueTeleop(Controller):
 
     def gripper_diagnostic(self, now):
         readings = []
-        for label, state in zip(('can1', 'can0'), self.states):
+        for label, state in zip(('can_master', 'can_slave'), self.states):
             frame = state.frames.get(0x2a8)
             if frame is None:
                 readings.append(f'{label}=missing')
@@ -102,16 +102,16 @@ class TorqueTeleop(Controller):
             f'TORQUE DIAG: phase={self.mode}; NEXT age_ms={age(self.last_next)}; '
             f'contact={self.contact}; contact age_ms={age(self.last_contact)}; '
             f'NEXT filtered residual Nm={values(self.next_tau)}; '
-            f'can0 measured Nm={values(self.states[1].motor()[1])}; '
-            f'can1 gravity Nm={values(self.master_gravity)}; '
-            f'can1 modeled damping Nm={values(-np.asarray(self.cfg["master_damping"])*velocity)}; '
+            f'can_slave measured Nm={values(self.states[1].motor()[1])}; '
+            f'can_master gravity Nm={values(self.master_gravity)}; '
+            f'can_master modeled damping Nm={values(-np.asarray(self.cfg["master_damping"])*velocity)}; '
             f'reflected Nm={values(torque)}; '
             f'reflection blocked joints={np.flatnonzero(self.reflection_motion_gate.blocked).tolist() if hasattr(self,"reflection_motion_gate") else []} (zero-based); '
-            f'can1 modeled total Nm={values(self.master_expected_torque)}; '
-            f'can1 measured Nm={values(measured)}'+self.gripper_diagnostic(now))
+            f'can_master modeled total Nm={values(self.master_expected_torque)}; '
+            f'can_master measured Nm={values(measured)}'+self.gripper_diagnostic(now))
 
     def startup(self, now):
-        """Retain enabled joints; support can1 and hold can0 before following."""
+        """Retain enabled joints; support can_master and hold can_slave before following."""
         m, s = self.states
         required = [*range(0x2a5,0x2a8), *range(0x251,0x257), *range(0x261,0x267),0x2a1]
         if self.mode == 'STARTUP':
@@ -138,7 +138,7 @@ class TorqueTeleop(Controller):
             self.compliant(0,self.qm,m.motor()[0])
             position(self.sockets[1],self.command)
             self.transition = now
-            self.log('PREPARE: retaining joint enables; can1 gravity support, can0 pose hold. No disable commands.')
+            self.log('PREPARE: retaining joint enables; can_master gravity support, can_slave pose hold. No disable commands.')
             return
         if not all(st.fresh(required,now,self.cfg['state_timeout']) and st.normal()
                    for st in self.states):
@@ -163,7 +163,7 @@ class TorqueTeleop(Controller):
                             send(sock,0x471,[joint,2,0,0,0,0,0,0])
             return
         self.mode = 'WAIT_ALIGN'
-        self.log('WAIT_ALIGN: can0 holds its pose; alignment starts within 15 degrees. Can1 remains compliant.')
+        self.log('WAIT_ALIGN: can_slave holds its pose; alignment starts within 15 degrees. The master interface remains compliant.')
 
     def refresh_modes(self, now, force=False):
         # Startup MIT mode only. Once following begins the native follower owns

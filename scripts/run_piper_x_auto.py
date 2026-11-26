@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def check_can_queues():
     """Read interface configuration; never change it or send a CAN frame."""
-    for name in ('can1', 'can0'):
+    for name in ('can_master', 'can_slave'):
         result = subprocess.run(['ip', '-details', '-json', 'link', 'show', 'dev', name],
                                 check=True, capture_output=True, text=True)
         link = json.loads(result.stdout)[0]
@@ -71,11 +71,11 @@ def main():
                 # A second bridge here would interleave incompatible samples.
                 command = [sys.executable, str(ROOT/'scripts/piper_x_haptics.py'),
                            '--control', '--continuous-torque', '--config', str(ROOT/'config/piper_x_simulate_torque.yaml')]
-                print('CONTINUOUS TORQUE: can1 measured motion -> can0; NEXT can0 torque -> can1 MIT. '
-                      'Startup sets BOTH firmware roles to slave for PC control; can1 is the software leader. '
+                print('CONTINUOUS TORQUE: can_master measured motion -> can_slave; NEXT can_slave torque -> can_master MIT. '
+                      'Startup sets BOTH firmware roles to slave for PC control; can_master is the software leader. '
                       'No runtime role swaps. Support both arms during startup. Ctrl-C requests holds.', flush=True)
             else:
-                bridge = subprocess.Popen([sys.executable, str(ROOT/'scripts/piper_can_record_bridge.py'), '--can', 'can0'],
+                bridge = subprocess.Popen([sys.executable, str(ROOT/'scripts/piper_can_record_bridge.py'), '--can', 'can_slave'],
                                           stdout=log, stderr=subprocess.STDOUT, start_new_session=True, cwd=ROOT)
                 command = [sys.executable, str(ROOT/'scripts/piper_x_native_teleop.py')]
                 print('Native master mode; NEXT estimates only (no force reflection).', flush=True)
